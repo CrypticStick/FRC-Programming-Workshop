@@ -13,6 +13,7 @@ import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.commands.MotorSpinner;
+import frc.robot.subsystems.Pneumatics2903;
 import frc.robot.subsystems.TalonMotor2903;
 
 /**
@@ -25,6 +26,7 @@ import frc.robot.subsystems.TalonMotor2903;
 public class Robot extends TimedRobot {
   //initialize your subsystems in the Robot class
   public static TalonMotor2903 talonSubsystem;
+  public static Pneumatics2903 pneumaticSubsystem;
   //also initialize the OI class (open OI.java for details)
   public static OI m_oi;
 
@@ -39,6 +41,7 @@ public class Robot extends TimedRobot {
   public void robotInit() {
     //you can define your subsystems here
     talonSubsystem = new TalonMotor2903(RobotMap.motor);
+    pneumaticSubsystem = new Pneumatics2903();
     m_oi = new OI();
     m_chooser.setDefaultOption("Default Auto", new MotorSpinner());
     // chooser.addOption("My Auto", new MyAutoCommand());

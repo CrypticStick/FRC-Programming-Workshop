@@ -24,5 +24,10 @@ public class RobotMap {
   // public static int rangefinderPort = 1;
   // public static int rangefinderModule = 1;
 
+  //TALON PORTS
   public static int motor = 0;
+
+  //PNEUMATIC PORTS
+  public static int pistonOpen = 0;
+  public static int pistonClose = 1;
 }
