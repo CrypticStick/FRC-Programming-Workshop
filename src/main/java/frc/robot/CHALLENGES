@@ -5,8 +5,8 @@ Even if you don't want to here are some challenges anyways >:)
 Challenges:
 [] Make the motor spin 2 full revolutions
 [] Make the motor change speed according to controller input
-[] Add PistonMover to Robot.java so you can use it!
-[] Make the pneumatic piston open!
+[] Make the servo stop in the center!
+[] Make the servo move to D-PAD direction
 [] Make the motor slow down as it gets closer to it's goal
 [] Make the motor move to D-PAD direction
 [] Make PID LOOP <(OoO)>

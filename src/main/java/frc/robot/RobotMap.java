@@ -27,6 +27,9 @@ public class RobotMap {
   //TALON PORTS
   public static int motor = 0;
 
+  //PWM PORTS
+  public static int servo = 0;
+
   //PNEUMATIC PORTS
   public static int pistonOpen = 0;
   public static int pistonClose = 1;

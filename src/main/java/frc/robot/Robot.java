@@ -13,7 +13,8 @@ import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.commands.MotorSpinner;
-import frc.robot.subsystems.Pneumatics2903;
+import frc.robot.commands.ServoMover;
+import frc.robot.subsystems.Servo2903;
 import frc.robot.subsystems.TalonMotor2903;
 
 /**
@@ -25,8 +26,10 @@ import frc.robot.subsystems.TalonMotor2903;
  */
 public class Robot extends TimedRobot {
   //initialize your subsystems in the Robot class
+  public static Command teleop;
   public static TalonMotor2903 talonSubsystem;
-  public static Pneumatics2903 pneumaticSubsystem;
+  public static Servo2903 servoSubsystem;
+  //public static Pneumatics2903 pneumaticSubsystem;
   //also initialize the OI class (open OI.java for details)
   public static OI m_oi;
 
@@ -41,9 +44,11 @@ public class Robot extends TimedRobot {
   public void robotInit() {
     //you can define your subsystems here
     talonSubsystem = new TalonMotor2903(RobotMap.motor);
-    pneumaticSubsystem = new Pneumatics2903();
+    servoSubsystem = new Servo2903();
+    teleop = new ServoMover();
+    //pneumaticSubsystem = new Pneumatics2903();
     m_oi = new OI();
-    m_chooser.setDefaultOption("Default Auto", new MotorSpinner());
+    m_chooser.setDefaultOption("Motor Spinner", new MotorSpinner());
     // chooser.addOption("My Auto", new MyAutoCommand());
     SmartDashboard.putData("Auto mode", m_chooser);
   }
@@ -126,6 +131,7 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void teleopPeriodic() {
+    Scheduler.getInstance().add(teleop);
     Scheduler.getInstance().run();
   }
 

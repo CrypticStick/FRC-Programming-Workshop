@@ -11,36 +11,33 @@ import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.Robot;
 
 /**
- * This command spins the motor 360 degrees
+ * This command spins the servo based on controller input
  */
-public class PistonMover extends Command {
+public class ServoMover extends Command {
 
-  final int TICKS_PER_REV = 4096;
-
-  public PistonMover() {
+  public ServoMover() {
     // Use requires() here to declare subsystem dependencies
-    requires(Robot.pneumaticSubsystem);
+    requires(Robot.servoSubsystem);
   }
 
   // Called just before this Command runs the first time
   @Override
   protected void initialize() {
-    Robot.talonSubsystem.setEncoderQuad(0);
   }
 
   // Called repeatedly when this Command is scheduled to 
   //in this program, the wheel will turn 360 degrees.
   @Override
   protected void execute() {
-      Robot.talonSubsystem.setSpeed(0.5); //speeds are from -1 to 1
+      if (Robot.m_oi.joy.getPOV() == 90)
+        Robot.servoSubsystem.farRight();
+      else if (Robot.m_oi.joy.getPOV() == 270)
+        Robot.servoSubsystem.farLeft();
   }
 
   // Make this return true when this Command no longer needs to run execute()
   @Override
   protected boolean isFinished() {
-    if (Robot.talonSubsystem.getEncoderQuad() >= TICKS_PER_REV)
-      return true;
-    else
       return false;
   }
 
